@@ -114,7 +114,7 @@ uvx pre-commit run --all-files
 uvx pre-commit run --all-files
 
 # run the module to verify the environment (.venv)
-uv run python -m datafun.app_case
+uv run python -m datafun.app_sum-randow
 
 # do chores
 uv run ruff format .
@@ -185,6 +185,8 @@ Remove unnecessary instructional comments in your final version of this README.m
 
 ![Correlation Heatmap](./docs/images/Figure_1.png)
 
-![Provide a Useful Caption](./docs/images/Figure_2.png)
+![Scatterplot of Flipper Length vs Body Mass](./docs/images/Figure_2.png)
 
-![Provide a Useful Caption](./docs/images/Figure_3.png)
+![Scatterplot of Bill Length vs Body Mass](./docs/images/Figure_2b.png)
+
+![Box Plot of Flipper Length](./docs/images/Figure_3.png)
