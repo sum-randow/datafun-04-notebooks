@@ -146,42 +146,11 @@ You accidentally started Python interactive mode.
 It happens.
 Press `Ctrl+c` (both keys together) or `Ctrl+Z` then `Enter` on Windows.
 
-## Example Output (Can Remove this Section after You Verify)
-
-```shell
-| INFO | EDA | --- Section 9: Summary and next steps ---
-| INFO | EDA | ========================
-| INFO | EDA | SUMMARY
-| INFO | EDA | ========================
-| INFO | EDA | Dataset: penguins
-| INFO | EDA | Original rows: 344
-| INFO | EDA | Clean rows:    342
-| INFO | EDA | Groups found in species: ['Adelie', 'Chinstrap', 'Gentoo']
-| INFO | EDA | Strongest correlation:
-| INFO | EDA |   flipper_length_mm and body_mass_g (~0.87)
-| INFO | EDA | Suggested next step:
-| INFO | EDA |   Model body_mass_g ~ flipper_length_mm with linear regression
-| INFO | EDA | ----- in a script, call plt.show() once at the end to display all charts -----
-| INFO | EDA | EDA workflow complete
-| INFO | EDA | IMPORTANT: This script creates chart windows.
-| INFO | EDA | Close any chart windows and terminate this process with CTRL+c as needed.
-| INFO | EDA | ========================
-| INFO | EDA | Executed successfully!
-| INFO | EDA | ========================
 ```
 
 ## Findings and Visuals
 
-Take screenshots of your charts and provide them here with a discussion.
-In Markdown, display a figure by using:
-an exclamation mark immediately followed by square brackets containing a useful caption
-immediately followed by parentheses containing the relative path to your figure.
-Note: When you start typing the path with a dot (.) for "here, in this directory",
-the IDE may help complete the path.
-
-Follow this example, but the figures should
-reflect your work and include your narrative.
-Remove unnecessary instructional comments in your final version of this README.md.
+Example Graphs
 
 ![Correlation Heatmap](./docs/images/Figure_1.png)
 
@@ -190,3 +159,28 @@ Remove unnecessary instructional comments in your final version of this README.m
 ![Scatterplot of Bill Length vs Body Mass](./docs/images/Figure_2b.png)
 
 ![Box Plot of Flipper Length](./docs/images/Figure_3.png)
+
+## Custom Project
+
+### Dataset
+- Dataset: Tips
+- Description: Restaurant tipping data recording total bill, tip amount, and inforamtion about the dining party (size, time, day, smoker status).
+- Source: Bryant, P. G. and Smith, M. A. (1995), Practical Data Analysis:
+      Case Studies in Business Statistics.
+    - Access: Available via Seaborn's built-in datasets
+
+### Phase 4 Modifications
+-In Phase 4 I created a second scatterplot to compare two new variables: bill length vs body mass.
+-We knew for the heat map that there was not as strong a correlation between these two variables, which is visible now in the new scatterplot.
+
+### Phase 5 Custom Project
+-In Phase 5 I created a new notebook and .py code to run an EDA on the Tips data set (described above)
+- Overall, it is noted that Total Bill is a relatively good indicator of Tip.  Thus, a next step could be to do a linear regression of the data in order to model tip based on a total bill.  It was noted that weekends appear to have significant variability as to what tip to expect.
+
+## Findings and Visuals
+
+![Scatterplot of Total Bill vs Tip](./docs/images/Figure_4.png)
+
+![Scatterplot of Total Bill vs Tip by Smoker Status](./docs/images/Figure_5.png)
+
+![Box Plot of Tip by Day](./docs/images/Figure_6.png)

@@ -1703,3 +1703,889 @@ Interpretation:
 
 From this heatmap, we can see that flipper_length_mm and body_mass_g show strong positive correlation (~0.87).
 
+2026-06-05 11:06:46 | INFO | EDA-NB | === RUN START ===
+2026-06-05 11:06:46 | INFO | EDA-NB | project=EDA-NB
+2026-06-05 11:06:46 | INFO | EDA-NB | repo_dir=datafun-04-notebooks
+2026-06-05 11:06:46 | INFO | EDA-NB | python=3.14.5
+2026-06-05 11:06:46 | INFO | EDA-NB | os=Darwin 24.6.0
+2026-06-05 11:06:46 | INFO | EDA-NB | shell=zsh
+2026-06-05 11:06:46 | INFO | EDA-NB | cwd=notebooks
+2026-06-05 11:06:46 | INFO | EDA-NB | github_actions=False
+2026-06-05 11:06:46 | INFO | EDA-NB | Imports complete.
+2026-06-05 11:07:29 | INFO | EDA-NB | Loading dataset: tips
+2026-06-05 11:07:29 | INFO | EDA-NB | Loaded: 244 rows, 7 columns
+2026-06-05 11:07:55 | INFO | EDA-NB | Previewing first few rows of the dataset
+2026-06-05 11:08:12 | INFO | EDA-NB | Column names
+2026-06-05 11:08:33 | INFO | EDA-NB | DataFrame info (types and non-null counts)
+2026-06-05 11:08:47 | INFO | EDA-NB | Dataset shape: 244 rows, 7 columns
+2026-06-05 11:09:05 | INFO | EDA-NB | Building starter data dictionary
+2026-06-05 11:09:05 | DEBUG | EDA-NB | 
+       column     dtype  missing_count  missing_pct
+0  total_bill   float64              0          0.0
+1         tip   float64              0          0.0
+2         sex  category              0          0.0
+3      smoker  category              0          0.0
+4         day  category              0          0.0
+5        time  category              0          0.0
+6        size     int64              0          0.0
+2026-06-05 11:09:21 | INFO | EDA-NB | Missing values per column:
+2026-06-05 11:09:21 | INFO | EDA-NB | total_bill    0
+tip           0
+sex           0
+smoker        0
+day           0
+time          0
+size          0
+dtype: int64
+2026-06-05 11:09:21 | INFO | EDA-NB | Checking missing values per column
+2026-06-05 11:09:21 | DEBUG | EDA-NB | 
+total_bill    0
+tip           0
+sex           0
+smoker        0
+day           0
+time          0
+size          0
+dtype: int64
+2026-06-05 11:09:21 | INFO | EDA-NB | Duplicate rows detected: 1
+2026-06-05 11:09:21 | INFO | EDA-NB | Call describe() for numeric columns
+2026-06-05 11:09:21 | DEBUG | EDA-NB | 
+       total_bill         tip        size
+count  244.000000  244.000000  244.000000
+mean    19.785943    2.998279    2.569672
+std      8.902412    1.383638    0.951100
+min      3.070000    1.000000    1.000000
+25%     13.347500    2.000000    2.000000
+50%     17.795000    2.900000    2.000000
+75%     24.127500    3.562500    3.000000
+max     50.810000   10.000000    6.000000
+
+2026-06-05 11:10:09 | DEBUG | EDA-NB | Columns required to be non-missing: ['total_bill', 'tip', 'size', 'day']
+2026-06-05 11:10:09 | INFO | EDA-NB | Original rows: 244
+2026-06-05 11:10:09 | INFO | EDA-NB | Clean rows:    244
+2026-06-05 11:10:09 | INFO | EDA-NB | Rows dropped:  0
+2026-06-05 11:11:34 | INFO | EDA-NB | --------------- Manual statistics ---------------
+2026-06-05 11:11:34 | INFO | EDA-NB | Total Bill Statistics (using numpy):
+2026-06-05 11:11:34 | INFO | EDA-NB |   Mean: 19.79
+2026-06-05 11:11:34 | INFO | EDA-NB |   Std Dev: 8.88
+2026-06-05 11:11:34 | INFO | EDA-NB |   Min: 3.07
+2026-06-05 11:11:34 | INFO | EDA-NB |   Max: 50.81
+2026-06-05 11:11:34 | INFO | EDA-NB |   Range: 47.74
+2026-06-05 11:13:27 | INFO | EDA-NB | Tip Statistics (using numpy):
+2026-06-05 11:13:27 | INFO | EDA-NB |   Mean: 3.00
+2026-06-05 11:13:27 | INFO | EDA-NB |   Std Dev: 1.38
+2026-06-05 11:13:27 | INFO | EDA-NB |   Min: 1.00
+2026-06-05 11:13:27 | INFO | EDA-NB |   Max: 10.00
+2026-06-05 11:13:27 | INFO | EDA-NB |   Range: 9.00
+2026-06-05 11:14:08 | INFO | EDA-NB | Computing overall descriptive statistics
+2026-06-05 11:14:08 | DEBUG | EDA-NB | 
+            count       mean       std   min      25%     50%      75%    max
+total_bill  244.0  19.785943  8.902412  3.07  13.3475  17.795  24.1275  50.81
+tip         244.0   2.998279  1.383638  1.00   2.0000   2.900   3.5625  10.00
+size        244.0   2.569672  0.951100  1.00   2.0000   2.000   3.0000   6.00
+2026-06-05 11:14:08 | INFO | EDA-NB | --------------- Using pandas groupby() and agg() ---------------
+2026-06-05 11:14:08 | INFO | EDA-NB | Computing descriptive statistics by group
+2026-06-05 11:14:08 | DEBUG | EDA-NB | 
+     total_bill                                     tip                                   size                      \
+          count       mean       std   min    max count      mean       std   min    max count      mean       std   
+day                                                                                                                  
+Thur         62  17.682742  7.886170  7.51  43.11    62  2.771452  1.240223  1.25   6.70    62  2.451613  1.066285   
+Fri          19  17.151579  8.302660  5.75  40.17    19  2.734737  1.019577  1.00   4.73    19  2.105263  0.567131   
+Sat          87  20.441379  9.480419  3.07  50.81    87  2.993103  1.631014  1.00  10.00    87  2.517241  0.819275   
+Sun          76  21.410000  8.832122  7.25  48.17    76  3.255132  1.234880  1.01   6.50    76  2.842105  1.007341   
+
+              
+     min max  
+day           
+Thur   1   6  
+Fri    1   4  
+Sat    1   5  
+Sun    2   6  
+2026-06-05 11:14:13 | INFO | EDA-NB | --------------- Improving the output ---------------
+2026-06-05 11:14:13 | DEBUG | EDA-NB | 
+                 count       mean       std   min    max
+day                                                     
+Thur total_bill     62  17.682742  7.886170  7.51  43.11
+     tip            62   2.771452  1.240223  1.25   6.70
+     size           62   2.451613  1.066285  1.00   6.00
+Fri  total_bill     19  17.151579  8.302660  5.75  40.17
+     tip            19   2.734737  1.019577  1.00   4.73
+     size           19   2.105263  0.567131  1.00   4.00
+Sat  total_bill     87  20.441379  9.480419  3.07  50.81
+     tip            87   2.993103  1.631014  1.00  10.00
+     size           87   2.517241  0.819275  1.00   5.00
+Sun  total_bill     76  21.410000  8.832122  7.25  48.17
+     tip            76   3.255132  1.234880  1.01   6.50
+     size           76   2.842105  1.007341  2.00   6.00
+2026-06-05 11:15:00 | INFO | EDA-NB | Computing correlation matrix for numeric columns
+2026-06-05 11:15:00 | INFO | EDA-NB | 
+Correlation matrix:
+2026-06-05 11:15:00 | DEBUG | EDA-NB | 
+            total_bill       tip      size
+total_bill    1.000000  0.675734  0.598315
+tip           0.675734  1.000000  0.489299
+size          0.598315  0.489299  1.000000
+2026-06-05 11:15:26 | INFO | EDA-NB | ---------Visualize Correlation Matrix as a Heatmap---------------
+2026-06-05 11:15:37 | INFO | EDA-NB | ---------Visualize Correlation Matrix as a Heatmap---------------
+2026-06-05 11:15:48 | INFO | EDA-NB | ---------Visualize Correlation Matrix as a Heatmap---------------
+2026-06-05 11:16:38 | INFO | EDA-NB | ---------Visualize Correlation Matrix as a Heatmap---------------
+2026-06-05 11:23:44 | INFO | EDA-NB | ---- Creating Scatter Plot to see Relationships ------
+2026-06-05 11:23:44 | INFO | EDA-NB | ----   Use clean dataframe ---------------------------
+2026-06-05 11:23:44 | INFO | EDA-NB | ----   Set x to total bill -----------------------
+2026-06-05 11:23:44 | INFO | EDA-NB | ----   Set y to tip --------------------------
+2026-06-05 11:23:44 | INFO | EDA-NB | ----   Set the hue (color mapping) to the group column --
+2026-06-05 11:25:21 | INFO | EDA-NB | ------- Creating another chart -------
+2026-06-05 11:25:21 | INFO | EDA-NB | ------ Creating Box Plot to see Distribution: ---------
+2026-06-05 11:25:21 | INFO | EDA-NB | ------   Use clean dataframe --------------------------
+2026-06-05 11:25:21 | INFO | EDA-NB | ------   Set x to the group column --------------------
+2026-06-05 11:25:21 | INFO | EDA-NB | ------   Set y to tip ----------------------
+2026-06-05 11:26:50 | INFO | EDA-NB | ========================
+2026-06-05 11:26:50 | INFO | EDA-NB | SUMMARY
+2026-06-05 11:26:50 | INFO | EDA-NB | ========================
+2026-06-05 11:26:50 | INFO | EDA-NB | Dataset: tips
+2026-06-05 11:26:50 | INFO | EDA-NB | Original rows: 244
+2026-06-05 11:26:50 | INFO | EDA-NB | Clean rows:    244
+2026-06-05 11:26:50 | INFO | EDA-NB | Groups found in day: ['Fri', 'Sat', 'Sun', 'Thur']
+2026-06-05 11:26:50 | INFO | EDA-NB | Strongest correlation: 
+2026-06-05 11:26:50 | INFO | EDA-NB |   total_bill and tip (~0.68)
+2026-06-05 11:26:50 | INFO | EDA-NB | Suggested next step: 
+2026-06-05 11:26:50 | INFO | EDA-NB |   Model tip ~ total_bill with linear regression
+2026-06-05 11:26:50 | INFO | EDA-NB | EDA workflow complete
+2026-06-05 11:26:50 | INFO | EDA-NB | IMPORTANT: This script creates chart windows.
+2026-06-05 11:26:50 | INFO | EDA-NB | Close any chart windows and terminate this process with CTRL+c as needed.
+2026-06-05 11:26:50 | INFO | EDA-NB | ========================
+2026-06-05 11:26:50 | INFO | EDA-NB | Executed successfully!
+2026-06-05 11:26:50 | INFO | EDA-NB | ========================
+2026-06-05 11:40:46 | INFO | EDA-NB | === RUN START ===
+2026-06-05 11:40:46 | INFO | EDA-NB | project=EDA-NB
+2026-06-05 11:40:46 | INFO | EDA-NB | repo_dir=datafun-04-notebooks
+2026-06-05 11:40:46 | INFO | EDA-NB | python=3.14.5
+2026-06-05 11:40:46 | INFO | EDA-NB | os=Darwin 24.6.0
+2026-06-05 11:40:46 | INFO | EDA-NB | shell=zsh
+2026-06-05 11:40:46 | INFO | EDA-NB | cwd=notebooks
+2026-06-05 11:40:46 | INFO | EDA-NB | github_actions=False
+2026-06-05 11:40:46 | INFO | EDA-NB | Imports complete.
+2026-06-05 11:40:46 | INFO | EDA-NB | Loading dataset: tips
+2026-06-05 11:40:46 | INFO | EDA-NB | Loaded: 244 rows, 7 columns
+2026-06-05 11:40:46 | INFO | EDA-NB | Previewing first few rows of the dataset
+2026-06-05 11:40:46 | INFO | EDA-NB | Column names
+2026-06-05 11:40:46 | INFO | EDA-NB | DataFrame info (types and non-null counts)
+2026-06-05 11:40:46 | INFO | EDA-NB | Dataset shape: 244 rows, 7 columns
+2026-06-05 11:40:46 | INFO | EDA-NB | Building starter data dictionary
+2026-06-05 11:40:46 | DEBUG | EDA-NB | 
+       column     dtype  missing_count  missing_pct
+0  total_bill   float64              0          0.0
+1         tip   float64              0          0.0
+2         sex  category              0          0.0
+3      smoker  category              0          0.0
+4         day  category              0          0.0
+5        time  category              0          0.0
+6        size     int64              0          0.0
+2026-06-05 11:40:46 | INFO | EDA-NB | Missing values per column:
+2026-06-05 11:40:46 | INFO | EDA-NB | total_bill    0
+tip           0
+sex           0
+smoker        0
+day           0
+time          0
+size          0
+dtype: int64
+2026-06-05 11:40:46 | INFO | EDA-NB | Checking missing values per column
+2026-06-05 11:40:46 | DEBUG | EDA-NB | 
+total_bill    0
+tip           0
+sex           0
+smoker        0
+day           0
+time          0
+size          0
+dtype: int64
+2026-06-05 11:40:46 | INFO | EDA-NB | Duplicate rows detected: 1
+2026-06-05 11:40:46 | INFO | EDA-NB | Call describe() for numeric columns
+2026-06-05 11:40:46 | DEBUG | EDA-NB | 
+       total_bill         tip        size
+count  244.000000  244.000000  244.000000
+mean    19.785943    2.998279    2.569672
+std      8.902412    1.383638    0.951100
+min      3.070000    1.000000    1.000000
+25%     13.347500    2.000000    2.000000
+50%     17.795000    2.900000    2.000000
+75%     24.127500    3.562500    3.000000
+max     50.810000   10.000000    6.000000
+
+2026-06-05 11:40:46 | DEBUG | EDA-NB | Columns required to be non-missing: ['total_bill', 'tip', 'size', 'day']
+2026-06-05 11:40:46 | INFO | EDA-NB | Original rows: 244
+2026-06-05 11:40:46 | INFO | EDA-NB | Clean rows:    244
+2026-06-05 11:40:46 | INFO | EDA-NB | Rows dropped:  0
+2026-06-05 11:40:46 | INFO | EDA-NB | --------------- Manual statistics ---------------
+2026-06-05 11:40:46 | INFO | EDA-NB | Total Bill Statistics (using numpy):
+2026-06-05 11:40:46 | INFO | EDA-NB |   Mean: 19.79
+2026-06-05 11:40:46 | INFO | EDA-NB |   Std Dev: 8.88
+2026-06-05 11:40:46 | INFO | EDA-NB |   Min: 3.07
+2026-06-05 11:40:46 | INFO | EDA-NB |   Max: 50.81
+2026-06-05 11:40:46 | INFO | EDA-NB |   Range: 47.74
+2026-06-05 11:40:46 | INFO | EDA-NB | Tip Statistics (using numpy):
+2026-06-05 11:40:46 | INFO | EDA-NB |   Mean: 3.00
+2026-06-05 11:40:47 | INFO | EDA-NB |   Std Dev: 1.38
+2026-06-05 11:40:47 | INFO | EDA-NB |   Min: 1.00
+2026-06-05 11:40:47 | INFO | EDA-NB |   Max: 10.00
+2026-06-05 11:40:47 | INFO | EDA-NB |   Range: 9.00
+2026-06-05 11:40:47 | INFO | EDA-NB | Computing overall descriptive statistics
+2026-06-05 11:40:47 | DEBUG | EDA-NB | 
+            count       mean       std   min      25%     50%      75%    max
+total_bill  244.0  19.785943  8.902412  3.07  13.3475  17.795  24.1275  50.81
+tip         244.0   2.998279  1.383638  1.00   2.0000   2.900   3.5625  10.00
+size        244.0   2.569672  0.951100  1.00   2.0000   2.000   3.0000   6.00
+2026-06-05 11:40:47 | INFO | EDA-NB | --------------- Using pandas groupby() and agg() ---------------
+2026-06-05 11:40:47 | INFO | EDA-NB | Computing descriptive statistics by group
+2026-06-05 11:40:47 | DEBUG | EDA-NB | 
+     total_bill                                     tip                                   size                      \
+          count       mean       std   min    max count      mean       std   min    max count      mean       std   
+day                                                                                                                  
+Thur         62  17.682742  7.886170  7.51  43.11    62  2.771452  1.240223  1.25   6.70    62  2.451613  1.066285   
+Fri          19  17.151579  8.302660  5.75  40.17    19  2.734737  1.019577  1.00   4.73    19  2.105263  0.567131   
+Sat          87  20.441379  9.480419  3.07  50.81    87  2.993103  1.631014  1.00  10.00    87  2.517241  0.819275   
+Sun          76  21.410000  8.832122  7.25  48.17    76  3.255132  1.234880  1.01   6.50    76  2.842105  1.007341   
+
+              
+     min max  
+day           
+Thur   1   6  
+Fri    1   4  
+Sat    1   5  
+Sun    2   6  
+2026-06-05 11:40:47 | INFO | EDA-NB | --------------- Improving the output ---------------
+2026-06-05 11:40:47 | DEBUG | EDA-NB | 
+                 count       mean       std   min    max
+day                                                     
+Thur total_bill     62  17.682742  7.886170  7.51  43.11
+     tip            62   2.771452  1.240223  1.25   6.70
+     size           62   2.451613  1.066285  1.00   6.00
+Fri  total_bill     19  17.151579  8.302660  5.75  40.17
+     tip            19   2.734737  1.019577  1.00   4.73
+     size           19   2.105263  0.567131  1.00   4.00
+Sat  total_bill     87  20.441379  9.480419  3.07  50.81
+     tip            87   2.993103  1.631014  1.00  10.00
+     size           87   2.517241  0.819275  1.00   5.00
+Sun  total_bill     76  21.410000  8.832122  7.25  48.17
+     tip            76   3.255132  1.234880  1.01   6.50
+     size           76   2.842105  1.007341  2.00   6.00
+2026-06-05 11:40:47 | INFO | EDA-NB | Computing correlation matrix for numeric columns
+2026-06-05 11:40:47 | INFO | EDA-NB | 
+Correlation matrix:
+2026-06-05 11:40:47 | DEBUG | EDA-NB | 
+            total_bill       tip      size
+total_bill    1.000000  0.675734  0.598315
+tip           0.675734  1.000000  0.489299
+size          0.598315  0.489299  1.000000
+2026-06-05 11:40:47 | INFO | EDA-NB | ---------Visualize Correlation Matrix as a Heatmap---------------
+2026-06-05 11:40:47 | INFO | EDA-NB | ---- Creating Scatter Plot to see Relationships ------
+2026-06-05 11:40:47 | INFO | EDA-NB | ----   Use clean dataframe ---------------------------
+2026-06-05 11:40:47 | INFO | EDA-NB | ----   Set x to total bill -----------------------
+2026-06-05 11:40:47 | INFO | EDA-NB | ----   Set y to tip --------------------------
+2026-06-05 11:40:47 | INFO | EDA-NB | ----   Set the hue (color mapping) to the group column --
+2026-06-05 11:40:47 | INFO | EDA-NB | ------- Creating another chart -------
+2026-06-05 11:40:47 | INFO | EDA-NB | ------ Creating Box Plot to see Distribution: ---------
+2026-06-05 11:40:47 | INFO | EDA-NB | ------   Use clean dataframe --------------------------
+2026-06-05 11:40:47 | INFO | EDA-NB | ------   Set x to the group column --------------------
+2026-06-05 11:40:47 | INFO | EDA-NB | ------   Set y to tip ----------------------
+2026-06-05 11:40:47 | INFO | EDA-NB | ========================
+2026-06-05 11:40:47 | INFO | EDA-NB | SUMMARY
+2026-06-05 11:40:47 | INFO | EDA-NB | ========================
+2026-06-05 11:40:47 | INFO | EDA-NB | Dataset: tips
+2026-06-05 11:40:47 | INFO | EDA-NB | Original rows: 244
+2026-06-05 11:40:47 | INFO | EDA-NB | Clean rows:    244
+2026-06-05 11:40:47 | INFO | EDA-NB | Groups found in day: ['Fri', 'Sat', 'Sun', 'Thur']
+2026-06-05 11:40:47 | INFO | EDA-NB | Strongest correlation: 
+2026-06-05 11:40:47 | INFO | EDA-NB |   total_bill and tip (~0.68)
+2026-06-05 11:40:47 | INFO | EDA-NB | Suggested next step: 
+2026-06-05 11:40:47 | INFO | EDA-NB |   Model tip ~ total_bill with linear regression
+2026-06-05 11:40:47 | INFO | EDA-NB | EDA workflow complete
+2026-06-05 11:40:47 | INFO | EDA-NB | IMPORTANT: This script creates chart windows.
+2026-06-05 11:40:47 | INFO | EDA-NB | Close any chart windows and terminate this process with CTRL+c as needed.
+2026-06-05 11:40:47 | INFO | EDA-NB | ========================
+2026-06-05 11:40:47 | INFO | EDA-NB | Executed successfully!
+2026-06-05 11:40:47 | INFO | EDA-NB | ========================
+2026-06-05 11:42:03 | INFO | EDA-NB | === RUN START ===
+2026-06-05 11:42:03 | INFO | EDA-NB | project=EDA-NB
+2026-06-05 11:42:03 | INFO | EDA-NB | repo_dir=datafun-04-notebooks
+2026-06-05 11:42:03 | INFO | EDA-NB | python=3.14.5
+2026-06-05 11:42:03 | INFO | EDA-NB | os=Darwin 24.6.0
+2026-06-05 11:42:03 | INFO | EDA-NB | shell=zsh
+2026-06-05 11:42:03 | INFO | EDA-NB | cwd=notebooks
+2026-06-05 11:42:03 | INFO | EDA-NB | github_actions=False
+2026-06-05 11:42:03 | INFO | EDA-NB | Imports complete.
+2026-06-05 11:42:03 | INFO | EDA-NB | Loading dataset: tips
+2026-06-05 11:42:03 | INFO | EDA-NB | Loaded: 244 rows, 7 columns
+2026-06-05 11:42:03 | INFO | EDA-NB | Previewing first few rows of the dataset
+2026-06-05 11:42:03 | INFO | EDA-NB | Column names
+2026-06-05 11:42:03 | INFO | EDA-NB | DataFrame info (types and non-null counts)
+2026-06-05 11:42:04 | INFO | EDA-NB | Dataset shape: 244 rows, 7 columns
+2026-06-05 11:42:04 | INFO | EDA-NB | Building starter data dictionary
+2026-06-05 11:42:04 | DEBUG | EDA-NB | 
+       column     dtype  missing_count  missing_pct
+0  total_bill   float64              0          0.0
+1         tip   float64              0          0.0
+2         sex  category              0          0.0
+3      smoker  category              0          0.0
+4         day  category              0          0.0
+5        time  category              0          0.0
+6        size     int64              0          0.0
+2026-06-05 11:42:04 | INFO | EDA-NB | Missing values per column:
+2026-06-05 11:42:04 | INFO | EDA-NB | total_bill    0
+tip           0
+sex           0
+smoker        0
+day           0
+time          0
+size          0
+dtype: int64
+2026-06-05 11:42:04 | INFO | EDA-NB | Checking missing values per column
+2026-06-05 11:42:04 | DEBUG | EDA-NB | 
+total_bill    0
+tip           0
+sex           0
+smoker        0
+day           0
+time          0
+size          0
+dtype: int64
+2026-06-05 11:42:04 | INFO | EDA-NB | Duplicate rows detected: 1
+2026-06-05 11:42:04 | INFO | EDA-NB | Call describe() for numeric columns
+2026-06-05 11:42:04 | DEBUG | EDA-NB | 
+       total_bill         tip        size
+count  244.000000  244.000000  244.000000
+mean    19.785943    2.998279    2.569672
+std      8.902412    1.383638    0.951100
+min      3.070000    1.000000    1.000000
+25%     13.347500    2.000000    2.000000
+50%     17.795000    2.900000    2.000000
+75%     24.127500    3.562500    3.000000
+max     50.810000   10.000000    6.000000
+
+2026-06-05 11:42:04 | DEBUG | EDA-NB | Columns required to be non-missing: ['total_bill', 'tip', 'size', 'day']
+2026-06-05 11:42:04 | INFO | EDA-NB | Original rows: 244
+2026-06-05 11:42:04 | INFO | EDA-NB | Clean rows:    244
+2026-06-05 11:42:04 | INFO | EDA-NB | Rows dropped:  0
+2026-06-05 11:42:04 | INFO | EDA-NB | --------------- Manual statistics ---------------
+2026-06-05 11:42:04 | INFO | EDA-NB | Total Bill Statistics (using numpy):
+2026-06-05 11:42:04 | INFO | EDA-NB |   Mean: 19.79
+2026-06-05 11:42:04 | INFO | EDA-NB |   Std Dev: 8.88
+2026-06-05 11:42:04 | INFO | EDA-NB |   Min: 3.07
+2026-06-05 11:42:04 | INFO | EDA-NB |   Max: 50.81
+2026-06-05 11:42:04 | INFO | EDA-NB |   Range: 47.74
+2026-06-05 11:42:04 | INFO | EDA-NB | Tip Statistics (using numpy):
+2026-06-05 11:42:04 | INFO | EDA-NB |   Mean: 3.00
+2026-06-05 11:42:04 | INFO | EDA-NB |   Std Dev: 1.38
+2026-06-05 11:42:04 | INFO | EDA-NB |   Min: 1.00
+2026-06-05 11:42:04 | INFO | EDA-NB |   Max: 10.00
+2026-06-05 11:42:04 | INFO | EDA-NB |   Range: 9.00
+2026-06-05 11:42:04 | INFO | EDA-NB | Computing overall descriptive statistics
+2026-06-05 11:42:04 | DEBUG | EDA-NB | 
+            count       mean       std   min      25%     50%      75%    max
+total_bill  244.0  19.785943  8.902412  3.07  13.3475  17.795  24.1275  50.81
+tip         244.0   2.998279  1.383638  1.00   2.0000   2.900   3.5625  10.00
+size        244.0   2.569672  0.951100  1.00   2.0000   2.000   3.0000   6.00
+2026-06-05 11:42:04 | INFO | EDA-NB | --------------- Using pandas groupby() and agg() ---------------
+2026-06-05 11:42:04 | INFO | EDA-NB | Computing descriptive statistics by group
+2026-06-05 11:42:04 | DEBUG | EDA-NB | 
+     total_bill                                     tip                                   size                      \
+          count       mean       std   min    max count      mean       std   min    max count      mean       std   
+day                                                                                                                  
+Thur         62  17.682742  7.886170  7.51  43.11    62  2.771452  1.240223  1.25   6.70    62  2.451613  1.066285   
+Fri          19  17.151579  8.302660  5.75  40.17    19  2.734737  1.019577  1.00   4.73    19  2.105263  0.567131   
+Sat          87  20.441379  9.480419  3.07  50.81    87  2.993103  1.631014  1.00  10.00    87  2.517241  0.819275   
+Sun          76  21.410000  8.832122  7.25  48.17    76  3.255132  1.234880  1.01   6.50    76  2.842105  1.007341   
+
+              
+     min max  
+day           
+Thur   1   6  
+Fri    1   4  
+Sat    1   5  
+Sun    2   6  
+2026-06-05 11:42:04 | INFO | EDA-NB | --------------- Improving the output ---------------
+2026-06-05 11:42:04 | DEBUG | EDA-NB | 
+                 count       mean       std   min    max
+day                                                     
+Thur total_bill     62  17.682742  7.886170  7.51  43.11
+     tip            62   2.771452  1.240223  1.25   6.70
+     size           62   2.451613  1.066285  1.00   6.00
+Fri  total_bill     19  17.151579  8.302660  5.75  40.17
+     tip            19   2.734737  1.019577  1.00   4.73
+     size           19   2.105263  0.567131  1.00   4.00
+Sat  total_bill     87  20.441379  9.480419  3.07  50.81
+     tip            87   2.993103  1.631014  1.00  10.00
+     size           87   2.517241  0.819275  1.00   5.00
+Sun  total_bill     76  21.410000  8.832122  7.25  48.17
+     tip            76   3.255132  1.234880  1.01   6.50
+     size           76   2.842105  1.007341  2.00   6.00
+2026-06-05 11:42:04 | INFO | EDA-NB | Computing correlation matrix for numeric columns
+2026-06-05 11:42:04 | INFO | EDA-NB | 
+Correlation matrix:
+2026-06-05 11:42:04 | DEBUG | EDA-NB | 
+            total_bill       tip      size
+total_bill    1.000000  0.675734  0.598315
+tip           0.675734  1.000000  0.489299
+size          0.598315  0.489299  1.000000
+2026-06-05 11:42:04 | INFO | EDA-NB | ---------Visualize Correlation Matrix as a Heatmap---------------
+2026-06-05 11:42:04 | INFO | EDA-NB | ---- Creating Scatter Plot to see Relationships ------
+2026-06-05 11:42:04 | INFO | EDA-NB | ----   Use clean dataframe ---------------------------
+2026-06-05 11:42:04 | INFO | EDA-NB | ----   Set x to total bill -----------------------
+2026-06-05 11:42:04 | INFO | EDA-NB | ----   Set y to tip --------------------------
+2026-06-05 11:42:04 | INFO | EDA-NB | ----   Set the hue (color mapping) to the group column --
+2026-06-05 11:42:04 | INFO | EDA-NB | ------- Creating another chart -------
+2026-06-05 11:42:04 | INFO | EDA-NB | ------ Creating Box Plot to see Distribution: ---------
+2026-06-05 11:42:04 | INFO | EDA-NB | ------   Use clean dataframe --------------------------
+2026-06-05 11:42:04 | INFO | EDA-NB | ------   Set x to the group column --------------------
+2026-06-05 11:42:04 | INFO | EDA-NB | ------   Set y to tip ----------------------
+2026-06-05 11:42:04 | INFO | EDA-NB | ========================
+2026-06-05 11:42:04 | INFO | EDA-NB | SUMMARY
+2026-06-05 11:42:04 | INFO | EDA-NB | ========================
+2026-06-05 11:42:04 | INFO | EDA-NB | Dataset: tips
+2026-06-05 11:42:04 | INFO | EDA-NB | Original rows: 244
+2026-06-05 11:42:04 | INFO | EDA-NB | Clean rows:    244
+2026-06-05 11:42:04 | INFO | EDA-NB | Groups found in day: ['Fri', 'Sat', 'Sun', 'Thur']
+2026-06-05 11:42:04 | INFO | EDA-NB | Strongest correlation: 
+2026-06-05 11:42:04 | INFO | EDA-NB |   total_bill and tip (~0.68)
+2026-06-05 11:42:04 | INFO | EDA-NB | Suggested next step: 
+2026-06-05 11:42:04 | INFO | EDA-NB |   Model tip ~ total_bill with linear regression
+2026-06-05 11:42:04 | INFO | EDA-NB | EDA workflow complete
+2026-06-05 11:42:04 | INFO | EDA-NB | IMPORTANT: This script creates chart windows.
+2026-06-05 11:42:04 | INFO | EDA-NB | Close any chart windows and terminate this process with CTRL+c as needed.
+2026-06-05 11:42:04 | INFO | EDA-NB | ========================
+2026-06-05 11:42:04 | INFO | EDA-NB | Executed successfully!
+2026-06-05 11:42:04 | INFO | EDA-NB | ========================
+2026-06-05 12:03:07 | INFO | EDA-NB | === RUN START ===
+2026-06-05 12:03:07 | INFO | EDA-NB | project=EDA-NB
+2026-06-05 12:03:07 | INFO | EDA-NB | repo_dir=datafun-04-notebooks
+2026-06-05 12:03:07 | INFO | EDA-NB | python=3.14.5
+2026-06-05 12:03:07 | INFO | EDA-NB | os=Darwin 24.6.0
+2026-06-05 12:03:07 | INFO | EDA-NB | shell=zsh
+2026-06-05 12:03:07 | INFO | EDA-NB | cwd=.
+2026-06-05 12:03:07 | INFO | EDA-NB | github_actions=False
+2026-06-05 12:03:07 | INFO | EDA-NB | Imports complete.
+2026-06-05 12:03:07 | INFO | EDA-NB | === RUN START ===
+2026-06-05 12:03:07 | INFO | EDA-NB | project=EDA
+2026-06-05 12:03:07 | INFO | EDA-NB | repo_dir=datafun-04-notebooks
+2026-06-05 12:03:07 | INFO | EDA-NB | python=3.14.5
+2026-06-05 12:03:07 | INFO | EDA-NB | os=Darwin 24.6.0
+2026-06-05 12:03:07 | INFO | EDA-NB | shell=zsh
+2026-06-05 12:03:07 | INFO | EDA-NB | cwd=.
+2026-06-05 12:03:07 | INFO | EDA-NB | github_actions=False
+2026-06-05 12:03:07 | INFO | EDA-NB | ========================
+2026-06-05 12:03:07 | INFO | EDA-NB | START main()
+2026-06-05 12:03:07 | INFO | EDA-NB | ========================
+2026-06-05 12:03:07 | INFO | EDA-NB | --- Section 2: Load dataset: tips ---
+2026-06-05 12:03:07 | INFO | EDA-NB | Loading dataset: tips
+2026-06-05 12:03:07 | INFO | EDA-NB | Loaded: 244 rows, 7 columns
+2026-06-05 12:03:07 | INFO | EDA-NB | --- Section 3: Inspect shape and basic structure ---
+2026-06-05 12:03:07 | INFO | EDA-NB | Previewing first few rows of the dataset
+2026-06-05 12:03:07 | DEBUG | EDA-NB | 
+   total_bill   tip     sex smoker  day    time  size
+0       16.99  1.01  Female     No  Sun  Dinner     2
+1       10.34  1.66    Male     No  Sun  Dinner     3
+2       21.01  3.50    Male     No  Sun  Dinner     3
+3       23.68  3.31    Male     No  Sun  Dinner     2
+4       24.59  3.61  Female     No  Sun  Dinner     4
+2026-06-05 12:03:07 | INFO | EDA-NB | Column names
+2026-06-05 12:03:07 | DEBUG | EDA-NB | ['total_bill', 'tip', 'sex', 'smoker', 'day', 'time', 'size']
+2026-06-05 12:03:07 | INFO | EDA-NB | DataFrame info (types and non-null counts)
+2026-06-05 12:03:07 | INFO | EDA-NB | Dataset shape: 244 rows, 7 columns
+2026-06-05 12:03:07 | INFO | EDA-NB | --- Section 4: Create Data Dictionary and Check Data Quality ---
+2026-06-05 12:03:07 | INFO | EDA-NB | Building starter data dictionary
+2026-06-05 12:03:07 | DEBUG | EDA-NB | 
+       column     dtype  missing_count  missing_pct
+0  total_bill   float64              0          0.0
+1         tip   float64              0          0.0
+2         sex  category              0          0.0
+3      smoker  category              0          0.0
+4         day  category              0          0.0
+5        time  category              0          0.0
+6        size     int64              0          0.0
+2026-06-05 12:03:07 | INFO | EDA-NB | Missing values per column:
+2026-06-05 12:03:07 | INFO | EDA-NB | 
+total_bill    0
+tip           0
+sex           0
+smoker        0
+day           0
+time          0
+size          0
+dtype: int64
+2026-06-05 12:03:07 | INFO | EDA-NB | Checking missing values per column
+2026-06-05 12:03:07 | DEBUG | EDA-NB | 
+total_bill    0
+tip           0
+sex           0
+smoker        0
+day           0
+time          0
+size          0
+dtype: int64
+2026-06-05 12:03:07 | INFO | EDA-NB | Duplicate rows detected: 1
+2026-06-05 12:03:07 | INFO | EDA-NB | Call describe() for numeric columns
+2026-06-05 12:03:07 | DEBUG | EDA-NB | 
+       total_bill         tip        size
+count  244.000000  244.000000  244.000000
+mean    19.785943    2.998279    2.569672
+std      8.902412    1.383638    0.951100
+min      3.070000    1.000000    1.000000
+25%     13.347500    2.000000    2.000000
+50%     17.795000    2.900000    2.000000
+75%     24.127500    3.562500    3.000000
+max     50.810000   10.000000    6.000000
+
+2026-06-05 12:03:07 | INFO | EDA-NB | --- Section 5: Create a cleaned view for EDA ---
+2026-06-05 12:03:07 | INFO | EDA-NB | Creating cleaned view for EDA (dropping rows with key missing values)
+2026-06-05 12:03:07 | DEBUG | EDA-NB | Columns required to be non-missing: ['total_bill', 'tip', 'size', 'day']
+2026-06-05 12:03:07 | INFO | EDA-NB | Original rows: 244
+2026-06-05 12:03:07 | INFO | EDA-NB | Clean rows:    244
+2026-06-05 12:03:07 | INFO | EDA-NB | Rows dropped:  0
+2026-06-05 12:03:07 | INFO | EDA-NB | --- Section 6: Descriptive statistics for numeric columns ---
+2026-06-05 12:03:07 | INFO | EDA-NB | --------------- Manual statistics ---------------
+2026-06-05 12:03:07 | DEBUG | EDA-NB | Total Bill Statistics (using numpy):
+2026-06-05 12:03:07 | DEBUG | EDA-NB |   Mean: 19.79
+2026-06-05 12:03:07 | DEBUG | EDA-NB |   Std Dev: 8.88
+2026-06-05 12:03:07 | DEBUG | EDA-NB |   Min: 3.07
+2026-06-05 12:03:07 | DEBUG | EDA-NB |   Max: 50.81
+2026-06-05 12:03:07 | DEBUG | EDA-NB |   Range: 47.74
+2026-06-05 12:03:07 | DEBUG | EDA-NB | Tip Statistics (using numpy):
+2026-06-05 12:03:07 | DEBUG | EDA-NB |   Mean: 3.00
+2026-06-05 12:03:07 | DEBUG | EDA-NB |   Std Dev: 1.38
+2026-06-05 12:03:07 | DEBUG | EDA-NB |   Min: 1.00
+2026-06-05 12:03:07 | DEBUG | EDA-NB |   Max: 10.00
+2026-06-05 12:03:07 | DEBUG | EDA-NB |   Range: 9.00
+2026-06-05 12:03:07 | INFO | EDA-NB | --------------- Using pandas describe() method ---------------
+2026-06-05 12:03:07 | INFO | EDA-NB | Computing overall descriptive statistics
+2026-06-05 12:03:07 | DEBUG | EDA-NB | 
+            count       mean       std   min      25%     50%      75%    max
+total_bill  244.0  19.785943  8.902412  3.07  13.3475  17.795  24.1275  50.81
+tip         244.0   2.998279  1.383638  1.00   2.0000   2.900   3.5625  10.00
+size        244.0   2.569672  0.951100  1.00   2.0000   2.000   3.0000   6.00
+2026-06-05 12:03:07 | INFO | EDA-NB | --------------- Using pandas groupby() and agg() ---------------
+2026-06-05 12:03:07 | INFO | EDA-NB | Computing descriptive statistics by group
+2026-06-05 12:03:07 | DEBUG | EDA-NB | 
+     total_bill                                     tip                                   size                      \
+          count       mean       std   min    max count      mean       std   min    max count      mean       std   
+day                                                                                                                  
+Thur         62  17.682742  7.886170  7.51  43.11    62  2.771452  1.240223  1.25   6.70    62  2.451613  1.066285   
+Fri          19  17.151579  8.302660  5.75  40.17    19  2.734737  1.019577  1.00   4.73    19  2.105263  0.567131   
+Sat          87  20.441379  9.480419  3.07  50.81    87  2.993103  1.631014  1.00  10.00    87  2.517241  0.819275   
+Sun          76  21.410000  8.832122  7.25  48.17    76  3.255132  1.234880  1.01   6.50    76  2.842105  1.007341   
+
+              
+     min max  
+day           
+Thur   1   6  
+Fri    1   4  
+Sat    1   5  
+Sun    2   6  
+2026-06-05 12:03:07 | INFO | EDA-NB | 
+Stacked view - easier to read in logs:
+2026-06-05 12:03:07 | DEBUG | EDA-NB | 
+                 count       mean       std   min    max
+day                                                     
+Thur total_bill     62  17.682742  7.886170  7.51  43.11
+     tip            62   2.771452  1.240223  1.25   6.70
+     size           62   2.451613  1.066285  1.00   6.00
+Fri  total_bill     19  17.151579  8.302660  5.75  40.17
+     tip            19   2.734737  1.019577  1.00   4.73
+     size           19   2.105263  0.567131  1.00   4.00
+Sat  total_bill     87  20.441379  9.480419  3.07  50.81
+     tip            87   2.993103  1.631014  1.00  10.00
+     size           87   2.517241  0.819275  1.00   5.00
+Sun  total_bill     76  21.410000  8.832122  7.25  48.17
+     tip            76   3.255132  1.234880  1.01   6.50
+     size           76   2.842105  1.007341  2.00   6.00
+2026-06-05 12:03:07 | INFO | EDA-NB | --- Section 7: Correlation matrix for numeric columns ---
+2026-06-05 12:03:07 | INFO | EDA-NB | Computing correlation matrix for numeric columns
+2026-06-05 12:03:07 | INFO | EDA-NB | 
+Correlation matrix:
+2026-06-05 12:03:07 | DEBUG | EDA-NB | 
+            total_bill       tip      size
+total_bill    1.000000  0.675734  0.598315
+tip           0.675734  1.000000  0.489299
+size          0.598315  0.489299  1.000000
+2026-06-05 12:03:07 | INFO | EDA-NB | ---------Visualize Correlation Matrix as a Heatmap---------------
+2026-06-05 12:03:08 | INFO | EDA-NB | 
+CUSTOM: Update these notes and use Markdown cells to narrate and tell the story as you explore. For example:
+
+Interpretation:
+
+ - Values close to 1 (dark red) = strong positive correlation (both increase together)
+ - Values close to -1 (dark blue) = strong negative correlation (one increases, other decreases)
+ - Values close to 0 (white) = little or no linear relationship
+ - The diagonal is always 1 (each variable correlates perfectly with itself)
+
+From this heatmap, we can see that flipper_length_mm and body_mass_g show strong positive correlation (~0.87).
+
+2026-06-05 12:03:08 | INFO | EDA-NB | --- Section 8: Charts ---
+2026-06-05 12:03:08 | INFO | EDA-NB | ---- Creating Scatter Plot to see Relationships ------
+2026-06-05 12:03:08 | INFO | EDA-NB | ----   Use clean dataframe ---------------------------
+2026-06-05 12:03:08 | INFO | EDA-NB | ----   Set x to total bill ---------------------------
+2026-06-05 12:03:08 | INFO | EDA-NB | ----   Set y to tip ----------------------------------
+2026-06-05 12:03:08 | INFO | EDA-NB | ----   Set the hue (color mapping) to the group column --
+2026-06-05 12:03:08 | INFO | EDA-NB | ---- Creating Second Scatter Plot to see Relationships ------
+2026-06-05 12:03:08 | INFO | EDA-NB | ----   Use clean dataframe ---------------------------
+2026-06-05 12:03:08 | INFO | EDA-NB | ----   Set x to total bill ---------------------------
+2026-06-05 12:03:08 | INFO | EDA-NB | ----   Set y to tip ----------------------------------
+2026-06-05 12:03:08 | INFO | EDA-NB | ----   Set the hue (color mapping) to smoker column --
+2026-06-05 12:03:08 | INFO | EDA-NB | ------ Creating Box Plot to see Distribution: ---------
+2026-06-05 12:03:08 | INFO | EDA-NB | ------   Use clean dataframe --------------------------
+2026-06-05 12:03:08 | INFO | EDA-NB | ------   Set x to the group column --------------------
+2026-06-05 12:03:08 | INFO | EDA-NB | ------   Set y to tip ---------------------------------
+2026-06-05 12:03:08 | INFO | EDA-NB | --- Section 9: Summary and next steps ---
+2026-06-05 12:03:08 | INFO | EDA-NB | ========================
+2026-06-05 12:03:08 | INFO | EDA-NB | SUMMARY
+2026-06-05 12:03:08 | INFO | EDA-NB | ========================
+2026-06-05 12:03:08 | INFO | EDA-NB | Dataset: tips
+2026-06-05 12:03:08 | INFO | EDA-NB | Original rows: 244
+2026-06-05 12:03:08 | INFO | EDA-NB | Clean rows:    244
+2026-06-05 12:03:08 | INFO | EDA-NB | Groups found in day: ['Fri', 'Sat', 'Sun', 'Thur']
+2026-06-05 12:03:08 | INFO | EDA-NB | Strongest correlation: 
+2026-06-05 12:03:08 | INFO | EDA-NB |   total_bill and tip (~0.68)
+2026-06-05 12:03:08 | INFO | EDA-NB | Suggested next step: 
+2026-06-05 12:03:08 | INFO | EDA-NB |   Model tip ~ total_bill with linear regression
+2026-06-05 12:03:08 | INFO | EDA-NB | ----- in a script, call plt.show() once at the end to display all charts -----
+2026-06-05 12:03:08 | INFO | EDA-NB | ----- in a script, close the chart windows (with the close button) to continue  -----
+2026-06-05 12:03:20 | INFO | EDA-NB | EDA workflow complete
+2026-06-05 12:03:20 | INFO | EDA-NB | IMPORTANT: This script creates chart windows.
+2026-06-05 12:03:20 | INFO | EDA-NB | Close any chart windows and terminate this process with CTRL+c as needed.
+2026-06-05 12:03:20 | INFO | EDA-NB | ========================
+2026-06-05 12:03:20 | INFO | EDA-NB | Executed successfully!
+2026-06-05 12:03:20 | INFO | EDA-NB | ========================
+2026-06-05 12:13:12 | INFO | EDA-NB | === RUN START ===
+2026-06-05 12:13:12 | INFO | EDA-NB | project=EDA-NB
+2026-06-05 12:13:12 | INFO | EDA-NB | repo_dir=datafun-04-notebooks
+2026-06-05 12:13:12 | INFO | EDA-NB | python=3.14.5
+2026-06-05 12:13:12 | INFO | EDA-NB | os=Darwin 24.6.0
+2026-06-05 12:13:12 | INFO | EDA-NB | shell=zsh
+2026-06-05 12:13:12 | INFO | EDA-NB | cwd=.
+2026-06-05 12:13:12 | INFO | EDA-NB | github_actions=False
+2026-06-05 12:13:12 | INFO | EDA-NB | Imports complete.
+2026-06-05 12:13:12 | INFO | EDA-NB | === RUN START ===
+2026-06-05 12:13:12 | INFO | EDA-NB | project=EDA
+2026-06-05 12:13:12 | INFO | EDA-NB | repo_dir=datafun-04-notebooks
+2026-06-05 12:13:12 | INFO | EDA-NB | python=3.14.5
+2026-06-05 12:13:12 | INFO | EDA-NB | os=Darwin 24.6.0
+2026-06-05 12:13:12 | INFO | EDA-NB | shell=zsh
+2026-06-05 12:13:12 | INFO | EDA-NB | cwd=.
+2026-06-05 12:13:12 | INFO | EDA-NB | github_actions=False
+2026-06-05 12:13:12 | INFO | EDA-NB | ========================
+2026-06-05 12:13:12 | INFO | EDA-NB | START main()
+2026-06-05 12:13:12 | INFO | EDA-NB | ========================
+2026-06-05 12:13:12 | INFO | EDA-NB | --- Section 2: Load dataset: tips ---
+2026-06-05 12:13:12 | INFO | EDA-NB | Loading dataset: tips
+2026-06-05 12:13:12 | INFO | EDA-NB | Loaded: 244 rows, 7 columns
+2026-06-05 12:13:12 | INFO | EDA-NB | --- Section 3: Inspect shape and basic structure ---
+2026-06-05 12:13:12 | INFO | EDA-NB | Previewing first few rows of the dataset
+2026-06-05 12:13:12 | DEBUG | EDA-NB | 
+   total_bill   tip     sex smoker  day    time  size
+0       16.99  1.01  Female     No  Sun  Dinner     2
+1       10.34  1.66    Male     No  Sun  Dinner     3
+2       21.01  3.50    Male     No  Sun  Dinner     3
+3       23.68  3.31    Male     No  Sun  Dinner     2
+4       24.59  3.61  Female     No  Sun  Dinner     4
+2026-06-05 12:13:12 | INFO | EDA-NB | Column names
+2026-06-05 12:13:12 | DEBUG | EDA-NB | ['total_bill', 'tip', 'sex', 'smoker', 'day', 'time', 'size']
+2026-06-05 12:13:12 | INFO | EDA-NB | DataFrame info (types and non-null counts)
+2026-06-05 12:13:12 | INFO | EDA-NB | Dataset shape: 244 rows, 7 columns
+2026-06-05 12:13:12 | INFO | EDA-NB | --- Section 4: Create Data Dictionary and Check Data Quality ---
+2026-06-05 12:13:12 | INFO | EDA-NB | Building starter data dictionary
+2026-06-05 12:13:12 | DEBUG | EDA-NB | 
+       column     dtype  missing_count  missing_pct
+0  total_bill   float64              0          0.0
+1         tip   float64              0          0.0
+2         sex  category              0          0.0
+3      smoker  category              0          0.0
+4         day  category              0          0.0
+5        time  category              0          0.0
+6        size     int64              0          0.0
+2026-06-05 12:13:12 | INFO | EDA-NB | Missing values per column:
+2026-06-05 12:13:12 | INFO | EDA-NB | 
+total_bill    0
+tip           0
+sex           0
+smoker        0
+day           0
+time          0
+size          0
+dtype: int64
+2026-06-05 12:13:12 | INFO | EDA-NB | Checking missing values per column
+2026-06-05 12:13:12 | DEBUG | EDA-NB | 
+total_bill    0
+tip           0
+sex           0
+smoker        0
+day           0
+time          0
+size          0
+dtype: int64
+2026-06-05 12:13:12 | INFO | EDA-NB | Duplicate rows detected: 1
+2026-06-05 12:13:12 | INFO | EDA-NB | Call describe() for numeric columns
+2026-06-05 12:13:12 | DEBUG | EDA-NB | 
+       total_bill         tip        size
+count  244.000000  244.000000  244.000000
+mean    19.785943    2.998279    2.569672
+std      8.902412    1.383638    0.951100
+min      3.070000    1.000000    1.000000
+25%     13.347500    2.000000    2.000000
+50%     17.795000    2.900000    2.000000
+75%     24.127500    3.562500    3.000000
+max     50.810000   10.000000    6.000000
+
+2026-06-05 12:13:12 | INFO | EDA-NB | --- Section 5: Create a cleaned view for EDA ---
+2026-06-05 12:13:12 | INFO | EDA-NB | Creating cleaned view for EDA (dropping rows with key missing values)
+2026-06-05 12:13:12 | DEBUG | EDA-NB | Columns required to be non-missing: ['total_bill', 'tip', 'size', 'day']
+2026-06-05 12:13:12 | INFO | EDA-NB | Original rows: 244
+2026-06-05 12:13:12 | INFO | EDA-NB | Clean rows:    244
+2026-06-05 12:13:12 | INFO | EDA-NB | Rows dropped:  0
+2026-06-05 12:13:12 | INFO | EDA-NB | --- Section 6: Descriptive statistics for numeric columns ---
+2026-06-05 12:13:12 | INFO | EDA-NB | --------------- Manual statistics ---------------
+2026-06-05 12:13:12 | DEBUG | EDA-NB | Total Bill Statistics (using numpy):
+2026-06-05 12:13:12 | DEBUG | EDA-NB |   Mean: 19.79
+2026-06-05 12:13:12 | DEBUG | EDA-NB |   Std Dev: 8.88
+2026-06-05 12:13:12 | DEBUG | EDA-NB |   Min: 3.07
+2026-06-05 12:13:12 | DEBUG | EDA-NB |   Max: 50.81
+2026-06-05 12:13:12 | DEBUG | EDA-NB |   Range: 47.74
+2026-06-05 12:13:12 | DEBUG | EDA-NB | Tip Statistics (using numpy):
+2026-06-05 12:13:12 | DEBUG | EDA-NB |   Mean: 3.00
+2026-06-05 12:13:12 | DEBUG | EDA-NB |   Std Dev: 1.38
+2026-06-05 12:13:12 | DEBUG | EDA-NB |   Min: 1.00
+2026-06-05 12:13:12 | DEBUG | EDA-NB |   Max: 10.00
+2026-06-05 12:13:12 | DEBUG | EDA-NB |   Range: 9.00
+2026-06-05 12:13:12 | INFO | EDA-NB | --------------- Using pandas describe() method ---------------
+2026-06-05 12:13:12 | INFO | EDA-NB | Computing overall descriptive statistics
+2026-06-05 12:13:12 | DEBUG | EDA-NB | 
+            count       mean       std   min      25%     50%      75%    max
+total_bill  244.0  19.785943  8.902412  3.07  13.3475  17.795  24.1275  50.81
+tip         244.0   2.998279  1.383638  1.00   2.0000   2.900   3.5625  10.00
+size        244.0   2.569672  0.951100  1.00   2.0000   2.000   3.0000   6.00
+2026-06-05 12:13:12 | INFO | EDA-NB | --------------- Using pandas groupby() and agg() ---------------
+2026-06-05 12:13:12 | INFO | EDA-NB | Computing descriptive statistics by group
+2026-06-05 12:13:12 | DEBUG | EDA-NB | 
+     total_bill                                     tip                                   size                      \
+          count       mean       std   min    max count      mean       std   min    max count      mean       std   
+day                                                                                                                  
+Thur         62  17.682742  7.886170  7.51  43.11    62  2.771452  1.240223  1.25   6.70    62  2.451613  1.066285   
+Fri          19  17.151579  8.302660  5.75  40.17    19  2.734737  1.019577  1.00   4.73    19  2.105263  0.567131   
+Sat          87  20.441379  9.480419  3.07  50.81    87  2.993103  1.631014  1.00  10.00    87  2.517241  0.819275   
+Sun          76  21.410000  8.832122  7.25  48.17    76  3.255132  1.234880  1.01   6.50    76  2.842105  1.007341   
+
+              
+     min max  
+day           
+Thur   1   6  
+Fri    1   4  
+Sat    1   5  
+Sun    2   6  
+2026-06-05 12:13:12 | INFO | EDA-NB | 
+Stacked view - easier to read in logs:
+2026-06-05 12:13:12 | DEBUG | EDA-NB | 
+                 count       mean       std   min    max
+day                                                     
+Thur total_bill     62  17.682742  7.886170  7.51  43.11
+     tip            62   2.771452  1.240223  1.25   6.70
+     size           62   2.451613  1.066285  1.00   6.00
+Fri  total_bill     19  17.151579  8.302660  5.75  40.17
+     tip            19   2.734737  1.019577  1.00   4.73
+     size           19   2.105263  0.567131  1.00   4.00
+Sat  total_bill     87  20.441379  9.480419  3.07  50.81
+     tip            87   2.993103  1.631014  1.00  10.00
+     size           87   2.517241  0.819275  1.00   5.00
+Sun  total_bill     76  21.410000  8.832122  7.25  48.17
+     tip            76   3.255132  1.234880  1.01   6.50
+     size           76   2.842105  1.007341  2.00   6.00
+2026-06-05 12:13:12 | INFO | EDA-NB | --- Section 7: Correlation matrix for numeric columns ---
+2026-06-05 12:13:12 | INFO | EDA-NB | Computing correlation matrix for numeric columns
+2026-06-05 12:13:12 | INFO | EDA-NB | 
+Correlation matrix:
+2026-06-05 12:13:12 | DEBUG | EDA-NB | 
+            total_bill       tip      size
+total_bill    1.000000  0.675734  0.598315
+tip           0.675734  1.000000  0.489299
+size          0.598315  0.489299  1.000000
+2026-06-05 12:13:12 | INFO | EDA-NB | ---------Visualize Correlation Matrix as a Heatmap---------------
+2026-06-05 12:13:12 | INFO | EDA-NB | 
+CUSTOM: Update these notes and use Markdown cells to narrate and tell the story as you explore. For example:
+
+Interpretation:
+
+ - Values close to 1 (dark red) = strong positive correlation (both increase together)
+ - Values close to -1 (dark blue) = strong negative correlation (one increases, other decreases)
+ - Values close to 0 (white) = little or no linear relationship
+ - The diagonal is always 1 (each variable correlates perfectly with itself)
+
+From this heatmap, we can see that flipper_length_mm and body_mass_g show strong positive correlation (~0.87).
+
+2026-06-05 12:13:12 | INFO | EDA-NB | --- Section 8: Charts ---
+2026-06-05 12:13:12 | INFO | EDA-NB | ---- Creating Scatter Plot to see Relationships ------
+2026-06-05 12:13:12 | INFO | EDA-NB | ----   Use clean dataframe ---------------------------
+2026-06-05 12:13:12 | INFO | EDA-NB | ----   Set x to total bill ---------------------------
+2026-06-05 12:13:12 | INFO | EDA-NB | ----   Set y to tip ----------------------------------
+2026-06-05 12:13:12 | INFO | EDA-NB | ----   Set the hue (color mapping) to the group column --
+2026-06-05 12:13:12 | INFO | EDA-NB | ---- Creating Second Scatter Plot to see Relationships ------
+2026-06-05 12:13:12 | INFO | EDA-NB | ----   Use clean dataframe ---------------------------
+2026-06-05 12:13:12 | INFO | EDA-NB | ----   Set x to total bill ---------------------------
+2026-06-05 12:13:12 | INFO | EDA-NB | ----   Set y to tip ----------------------------------
+2026-06-05 12:13:12 | INFO | EDA-NB | ----   Set the hue (color mapping) to smoker column --
+2026-06-05 12:13:12 | INFO | EDA-NB | ------ Creating Box Plot to see Distribution: ---------
+2026-06-05 12:13:12 | INFO | EDA-NB | ------   Use clean dataframe --------------------------
+2026-06-05 12:13:12 | INFO | EDA-NB | ------   Set x to the group column --------------------
+2026-06-05 12:13:12 | INFO | EDA-NB | ------   Set y to tip ---------------------------------
+2026-06-05 12:13:12 | INFO | EDA-NB | --- Section 9: Summary and next steps ---
+2026-06-05 12:13:12 | INFO | EDA-NB | ========================
+2026-06-05 12:13:12 | INFO | EDA-NB | SUMMARY
+2026-06-05 12:13:12 | INFO | EDA-NB | ========================
+2026-06-05 12:13:12 | INFO | EDA-NB | Dataset: tips
+2026-06-05 12:13:12 | INFO | EDA-NB | Original rows: 244
+2026-06-05 12:13:12 | INFO | EDA-NB | Clean rows:    244
+2026-06-05 12:13:12 | INFO | EDA-NB | Groups found in day: ['Fri', 'Sat', 'Sun', 'Thur']
+2026-06-05 12:13:12 | INFO | EDA-NB | Strongest correlation: 
+2026-06-05 12:13:12 | INFO | EDA-NB |   total_bill and tip (~0.68)
+2026-06-05 12:13:12 | INFO | EDA-NB | Suggested next step: 
+2026-06-05 12:13:12 | INFO | EDA-NB |   Model tip ~ total_bill with linear regression
+2026-06-05 12:13:12 | INFO | EDA-NB | ----- in a script, call plt.show() once at the end to display all charts -----
+2026-06-05 12:13:12 | INFO | EDA-NB | ----- in a script, close the chart windows (with the close button) to continue  -----
+2026-06-05 12:13:19 | INFO | EDA-NB | EDA workflow complete
+2026-06-05 12:13:19 | INFO | EDA-NB | IMPORTANT: This script creates chart windows.
+2026-06-05 12:13:19 | INFO | EDA-NB | Close any chart windows and terminate this process with CTRL+c as needed.
+2026-06-05 12:13:19 | INFO | EDA-NB | ========================
+2026-06-05 12:13:19 | INFO | EDA-NB | Executed successfully!
+2026-06-05 12:13:19 | INFO | EDA-NB | ========================
+2026-06-05 12:14:13 | INFO | EDA | Loading dataset: penguins
+2026-06-05 12:14:13 | INFO | EDA | Loaded: 344 rows, 7 columns
+2026-06-05 12:14:13 | INFO | EDA | Loading dataset: penguins
+2026-06-05 12:14:13 | INFO | EDA | Loaded: 344 rows, 7 columns
+2026-06-05 12:14:13 | INFO | EDA | Loading dataset: penguins
+2026-06-05 12:14:13 | INFO | EDA | Loaded: 344 rows, 7 columns
+2026-06-05 12:14:13 | INFO | EDA | Loading dataset: penguins
+2026-06-05 12:14:13 | INFO | EDA | Loaded: 344 rows, 7 columns
+2026-06-05 12:14:13 | INFO | EDA | Creating cleaned view for EDA (dropping rows with key missing values)
+2026-06-05 12:14:13 | DEBUG | EDA | Columns required to be non-missing: ['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g', 'species']
+2026-06-05 12:14:13 | INFO | EDA | Original rows: 344
+2026-06-05 12:14:13 | INFO | EDA | Clean rows:    342
+2026-06-05 12:14:13 | INFO | EDA | Rows dropped:  2
+2026-06-05 12:14:13 | INFO | EDA | Computing correlation matrix for numeric columns
+2026-06-05 12:14:13 | INFO | EDA | 
+Correlation matrix:
+2026-06-05 12:14:13 | DEBUG | EDA | 
+                   bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g
+bill_length_mm           1.000000      -0.235053           0.656181     0.595110
+bill_depth_mm           -0.235053       1.000000          -0.583851    -0.471916
+flipper_length_mm        0.656181      -0.583851           1.000000     0.871202
+body_mass_g              0.595110      -0.471916           0.871202     1.000000
+2026-06-05 12:14:13 | INFO | EDA | ---------Visualize Correlation Matrix as a Heatmap---------------
+2026-06-05 12:14:13 | INFO | EDA | 
+CUSTOM: Update these notes and use Markdown cells to narrate and tell the story as you explore. For example:
+
+Interpretation:
+
+ - Values close to 1 (dark red) = strong positive correlation (both increase together)
+ - Values close to -1 (dark blue) = strong negative correlation (one increases, other decreases)
+ - Values close to 0 (white) = little or no linear relationship
+ - The diagonal is always 1 (each variable correlates perfectly with itself)
+
+From this heatmap, we can see that flipper_length_mm and body_mass_g show strong positive correlation (~0.87).
+

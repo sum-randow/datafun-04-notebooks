@@ -23,3 +23,21 @@ to get these projects running on your machine.
   - [RESOURCES.md](./module/RESOURCES.md)
   - [seaborn-datasets.md](./module/seaborn-datasets.md)
   - [TROUBLESHOOTING.md](./module/TROUBLESHOOTING.md)
+
+
+## Custom Project
+
+### Dataset
+- Dataset: Tips
+- Description: Restaurant tipping data recording total bill, tip amount, and inforamtion about the dining party (size, time, day, smoker status).
+- Source: Bryant, P. G. and Smith, M. A. (1995), Practical Data Analysis:
+      Case Studies in Business Statistics.
+    - Access: Available via Seaborn's built-in datasets
+
+### Phase 4 Modifications
+-In Phase 4 I created a second scatterplot to compare two new variables: bill length vs body mass.
+-We knew for the heat map that there was not as strong a correlation between these two variables, which is visible now in the new scatterplot.
+
+### Phase 5 Custom Project
+-In Phase 5 I created a new notebook and .py code to run an EDA on the Tips data set (described above)
+- Overall, it is noted that Total Bill is a relatively good indicator of Tip.  Thus, a next step could be to do a linear regression of the data in order to model tip based on a total bill.  It was noted that weekends appear to have significant variability as to what tip to expect.
