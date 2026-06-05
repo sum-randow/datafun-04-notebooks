@@ -147,7 +147,7 @@ It happens.
 Press `Ctrl+c` (both keys together) or `Ctrl+Z` then `Enter` on Windows.
 
 ```
-
+```
 ## Findings and Visuals
 
 Example Graphs
@@ -160,6 +160,8 @@ Example Graphs
 
 ![Box Plot of Flipper Length](./docs/images/Figure_3.png)
 
+```
+```
 ## Custom Project
 
 ### Dataset
